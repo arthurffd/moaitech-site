@@ -14,6 +14,8 @@ Static one-page site for moaitech.com. No build step: the files here are the sit
 - Text: open `index.html` and change it in place.
 - Images: replace the file in `assets/img/` and keep the same file name.
 - Contact address: search `index.html` for `contact@moaitech.com`.
+- Contact form: messages are delivered by Web3Forms. The `access_key` in the form decides which
+  inbox receives them; create a new key at web3forms.com to change it.
 
 ## Publishing on GitHub Pages
 

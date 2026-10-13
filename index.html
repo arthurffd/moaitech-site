@@ -29,7 +29,28 @@ body{margin:0;background:#000000}
 img{max-width:100%}
 a{color:#FAFAFA}
 a:hover{color:#FFFFFF}
-a:focus-visible{outline:2px solid #8FA8FF;outline-offset:3px;border-radius:4px}
+a:focus-visible,button:focus-visible{outline:2px solid #8FA8FF;outline-offset:3px;border-radius:4px}
+.contact-form{width:100%;max-width:640px;display:flex;flex-direction:column;gap:18px;text-align:left}
+.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:18px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{font-size:14px;font-weight:500;color:#B7BFDA}
+.optional{font-weight:400;color:#8A93B5}
+.field input,.field textarea{box-sizing:border-box;width:100%;font:inherit;font-size:16px;line-height:1.4;color:#FAFAFA;background:#0B1330;border:1px solid #2A3A7A;border-radius:10px;padding:12px 14px}
+.field textarea{resize:vertical;min-height:132px}
+.field input:focus,.field textarea:focus{outline:none;border-color:#8FA8FF;box-shadow:0 0 0 3px rgba(143,168,255,.25)}
+.trap{display:none}
+.form-foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+.btn-primary{font:inherit;font-weight:600;min-height:50px;padding:0 26px;border-radius:999px;border:0;background:#FAFAFA;color:#000000;cursor:pointer}
+.btn-primary:hover{background:#FFFFFF}
+.btn-primary:disabled{opacity:.6;cursor:default}
+.form-status{flex:1 1 220px;font-size:15px;line-height:1.4;color:#B7BFDA}
+.form-status.ok{color:#8FA8FF}
+.form-status.err{color:#FFB4A8}
+.form-note{margin:0;font-size:13px;color:#8A93B5}
+.contact-alt{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 14px;font-size:16px;color:#B7BFDA}
+.email-text{color:#FAFAFA;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:15px;user-select:all}
+.btn-ghost{font:inherit;font-size:14.5px;font-weight:500;display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:transparent;color:#FAFAFA;text-decoration:none;cursor:pointer}
+.btn-ghost:hover{border-color:#FFFFFF}
 @media (max-width:700px){.nav-link{display:none}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -48,7 +69,7 @@ a:focus-visible{outline:2px solid #8FA8FF;outline-offset:3px;border-radius:4px}
 <a class="nav-link" href="#method" style="color: #A3A3A3; text-decoration: none; padding: 12px 0">Methodology</a>
 <a class="nav-link" href="#cases" style="color: #A3A3A3; text-decoration: none; padding: 12px 0">Success cases</a>
 <a class="nav-link" href="#about" style="color: #A3A3A3; text-decoration: none; padding: 12px 0">About</a>
-<a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.28); color: #FAFAFA; font-weight: 500; text-decoration: none">Book a call</a>
+<a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.28); color: #FAFAFA; font-weight: 500; text-decoration: none">Get in touch</a>
 </nav>
 </div>
 </header>
@@ -59,7 +80,7 @@ a:focus-visible{outline:2px solid #8FA8FF;outline-offset:3px;border-radius:4px}
 <h1 style="margin: 0; max-width: 900px; color: #FAFAFA; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(54px, 8.4vw, 124px); font-weight: 400; line-height: 0.94; letter-spacing: -0.025em; text-wrap: balance">Data your AI can <em style="font-style: italic">trust.</em></h1>
 <p style="margin: 0; max-width: 620px; font-size: 20px; line-height: 1.5; text-wrap: pretty">Moai Data builds the pipelines, data models and semantic layer behind your dashboards and AI assistants. One source of truth for your business metrics.</p>
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 16px; padding-top: 4px">
-<a href="#contact" style="display: inline-flex; align-items: center; min-height: 50px; padding: 0 26px; border-radius: 999px; background: #FAFAFA; color: #000000; font-weight: 600; text-decoration: none">Book a 20-minute call</a>
+<a href="#contact" style="display: inline-flex; align-items: center; min-height: 50px; padding: 0 26px; border-radius: 999px; background: #FAFAFA; color: #000000; font-weight: 600; text-decoration: none">Get in touch</a>
 <a href="#cases" style="display: inline-flex; align-items: center; min-height: 50px; padding: 0 26px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.28); color: #FAFAFA; font-weight: 500; text-decoration: none">See success cases</a>
 </div>
 </div>
@@ -283,7 +304,7 @@ a:focus-visible{outline:2px solid #8FA8FF;outline-offset:3px;border-radius:4px}
 <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.14em; color: #9AA4C4">PROFILE</div>
 <p style="margin: 0; font-size: 16.5px; line-height: 1.5; color: #E6E9F5">Arthur Duarte is a Data Analytics Engineer. Through Moai Tech LLC, he helps small and medium-sized companies build modern data foundations, automate pipelines and turn multi-source data into clear insights and dashboards.</p>
 <div style="font-size: 14.5px; color: #9AA4C4">MBA in Project Management · BSc in Computer Engineering</div>
-<a href="https://www.linkedin.com/in/arthurfd/" style="display: inline-flex; align-items: center; min-height: 44px; margin-top: auto; color: #FAFAFA; font-size: 15px; font-weight: 500; text-underline-offset: 4px">Arthur on LinkedIn</a>
+<a target="_blank" rel="noopener" href="https://www.linkedin.com/in/arthurfd/" style="display: inline-flex; align-items: center; min-height: 44px; margin-top: auto; color: #FAFAFA; font-size: 15px; font-weight: 500; text-underline-offset: 4px">Arthur on LinkedIn</a>
 </div>
 <div style="flex: 1.25 1 420px; min-width: 0; box-sizing: border-box; background: #060B1E; border: 1px solid #1A2650; border-radius: 12px; padding: 20px 22px 20px; display: flex; flex-direction: column; gap: 18px">
 <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.14em; color: #9AA4C4">ROLES COVERED</div>
@@ -339,12 +360,34 @@ a:focus-visible{outline:2px solid #8FA8FF;outline-offset:3px;border-radius:4px}
 </section>
 
 <section id="contact" style="padding: clamp(72px, 9.5vw, 120px) 0; background: #060B1E; border-top: 1px solid #1A2650; border-bottom: 1px solid #1A2650">
-<div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 32px); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px">
-<h2 style="margin: 0; max-width: 820px; color: #FAFAFA; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(46px, 6.6vw, 96px); font-weight: 400; line-height: 0.96; letter-spacing: -0.025em; text-wrap: balance">Book a <span style="white-space: nowrap">20-minute</span> <em style="font-style: italic">intro call.</em></h2>
-<p style="margin: 0; max-width: 520px; font-size: 19px; color: #B7BFDA">Send a few lines about your data and what you want from it. You will get a reply with times for a call.</p>
-<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 28px">
-<a href="mailto:contact@moaitech.com" style="display: inline-flex; align-items: center; min-height: 50px; padding: 0 26px; border-radius: 999px; background: #FAFAFA; color: #000000; font-weight: 600; text-decoration: none">Book a call</a>
-<a href="mailto:contact@moaitech.com" style="display: inline-flex; align-items: center; min-height: 44px; color: #FAFAFA; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 15px; text-underline-offset: 4px">contact@moaitech.com</a>
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 32px); display: flex; flex-direction: column; align-items: center; gap: 40px">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px">
+<h2 style="margin: 0; max-width: 820px; color: #FAFAFA; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(46px, 6.6vw, 96px); font-weight: 400; line-height: 0.96; letter-spacing: -0.025em; text-wrap: balance">Let's talk about your <em style="font-style: italic">data.</em></h2>
+<p style="margin: 0; max-width: 560px; font-size: 19px; color: #B7BFDA">Send a few lines about your data and what you want from it. You get a reply by email, and a video call is arranged at a time that suits you.</p>
+</div>
+<form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="6a71424b-3a97-479a-87ce-32911f0efa9d">
+<input type="hidden" name="subject" value="New message from moaitech.com">
+<input type="hidden" name="from_name" value="Moai Data website">
+<input type="hidden" name="redirect" value="https://web3forms.com/success">
+<input type="checkbox" name="botcheck" class="trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="form-row">
+<div class="field"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" autocomplete="name" required></div>
+<div class="field"><label for="cf-email">Work email</label><input id="cf-email" type="email" name="email" autocomplete="email" required></div>
+</div>
+<div class="field"><label for="cf-company">Company <span class="optional">(optional)</span></label><input id="cf-company" type="text" name="company" autocomplete="organization"></div>
+<div class="field"><label for="cf-message">What do you need help with?</label><textarea id="cf-message" name="message" rows="5" required></textarea></div>
+<div class="form-foot">
+<button type="submit" class="btn-primary">Send message</button>
+<div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+</div>
+<p class="form-note">Your message is delivered by email through Web3Forms.</p>
+</form>
+<div class="contact-alt">
+<span>Or write to</span>
+<span class="email-text">contact@moaitech.com</span>
+<button type="button" id="copy-email" class="btn-ghost" data-email="contact@moaitech.com">Copy</button>
+<a class="btn-ghost" target="_blank" rel="noopener" href="https://www.linkedin.com/in/arthurfd/">LinkedIn</a>
 </div>
 </div>
 </section>
@@ -354,11 +397,65 @@ a:focus-visible{outline:2px solid #8FA8FF;outline-offset:3px;border-radius:4px}
 <img src="assets/img/moai-logo.png" alt="Moai Data" style="width: 150px; height: auto">
 <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: 14px; color: #8C8C8C">
 <div>Moai Data is a brand of Moai Tech LLC. © 2026 Moai Tech LLC.</div>
-<a href="https://www.linkedin.com/company/moai-data-analytics/" style="color: #A3A3A3; text-underline-offset: 4px">LinkedIn</a>
+<a target="_blank" rel="noopener" href="https://www.linkedin.com/company/moai-data-analytics/" style="color: #A3A3A3; text-underline-offset: 4px">LinkedIn</a>
 </div>
 </div>
 </footer>
 
 </div>
+<script>
+(function () {
+  var form = document.getElementById('contact-form');
+  if (form) {
+    var status = document.getElementById('form-status');
+    var button = form.querySelector('button[type=submit]');
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (form.botcheck && form.botcheck.checked) return; // filled only by bots
+      var payload = {};
+      new FormData(form).forEach(function (value, key) { if (key !== 'redirect') payload[key] = value; });
+      var label = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Sending...';
+      status.textContent = '';
+      status.className = 'form-status';
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (response) {
+        return response.json().then(function (result) {
+          if (!response.ok || !result.success) throw new Error(result.message || 'not sent');
+          form.reset();
+          status.textContent = 'Message sent. You will get a reply by email.';
+          status.classList.add('ok');
+        });
+      }).catch(function () {
+        status.textContent = 'The message could not be sent. Please write to contact@moaitech.com instead.';
+        status.classList.add('err');
+      }).then(function () {
+        button.disabled = false;
+        button.textContent = label;
+      });
+    });
+  }
+
+  var copy = document.getElementById('copy-email');
+  if (copy) {
+    copy.addEventListener('click', function () {
+      var address = copy.getAttribute('data-email');
+      var done = function () {
+        copy.textContent = 'Copied';
+        setTimeout(function () { copy.textContent = 'Copy'; }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(address).then(done, function () { window.prompt('Copy this address:', address); });
+      } else {
+        window.prompt('Copy this address:', address);
+      }
+    });
+  }
+})();
+</script>
 </body>
 </html>
